@@ -1,0 +1,44 @@
+﻿@model ahi.Models.Ubicacion
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Ubicacion</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.viaje.descripcion)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.viaje.descripcion)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.latitud)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.latitud)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.longitud)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.longitud)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.hora)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.hora)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.idubicacion }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,58 @@
+﻿@model ahi.Models.Viaje
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Viaje</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.dispositivo.mac)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.dispositivo.mac)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.vehiculo.placa)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.vehiculo.placa)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.descripcion)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.descripcion)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.horainicio)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.horainicio)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.horafin)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.horafin)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.mac)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.mac)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.idviaje }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

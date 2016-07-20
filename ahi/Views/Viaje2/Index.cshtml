@@ -1,0 +1,20 @@
+﻿@model ahi.Models.Usuario
+
+@{
+    ViewBag.Title = "Viajes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<ul data-role="listview" data-inset="true">
+@foreach (var item in Model.viajes.OrderByDescending(x => x.horainicio))
+{
+	if (item.ubicacions.Count > 0)
+	{
+    <li>@Html.ActionLink(item.horainicio.AddHours(2) + " - " + item.vehiculo.placa, "Index", "Ubicacion2", new { idviaje = item.idviaje, idusuario = Model.idusuario }, new { rel = "external" })</li>
+	}
+}
+</ul>
+
+<div>
+    @Html.ActionLink("Volver", "Index", "Usuario2")
+</div>

@@ -1,0 +1,61 @@
+﻿@model ahi.Models.Viaje
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Viaje</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.dispositivo.mac)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.dispositivo.mac)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.vehiculo.placa)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.vehiculo.placa)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.descripcion)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.descripcion)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.horainicio)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.horainicio)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.horafin)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.horafin)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.mac)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.mac)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

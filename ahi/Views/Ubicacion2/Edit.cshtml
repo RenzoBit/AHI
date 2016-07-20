@@ -1,0 +1,62 @@
+﻿@model ahi.Models.Ubicacion
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Ubicacion</legend>
+
+        @Html.HiddenFor(model => model.idubicacion)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.idviaje, "viaje")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("idviaje", String.Empty)
+            @Html.ValidationMessageFor(model => model.idviaje)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.latitud)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.latitud)
+            @Html.ValidationMessageFor(model => model.latitud)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.longitud)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.longitud)
+            @Html.ValidationMessageFor(model => model.longitud)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.hora)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.hora)
+            @Html.ValidationMessageFor(model => model.hora)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

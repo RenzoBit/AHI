@@ -1,0 +1,15 @@
+﻿@model IEnumerable<ahi.Models.Usuario>
+
+@{
+    ViewBag.Title = "Usuarios";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<ul data-role="listview" data-inset="true">
+@foreach (var item in Model)
+{
+    <li>@Html.ActionLink(item.nombre, "Index2", "Viaje2", new { idusuario = item.idusuario }, new { })</li>
+}
+</ul>
+
+<a href="~/Content/ahi.apk" data-role="button" data-ajax="false">Descargar App</a>

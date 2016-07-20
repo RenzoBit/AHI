@@ -1,0 +1,70 @@
+﻿@model IEnumerable<ahi.Models.Ubicacion>
+
+@{
+    ViewBag.Title = "Mapa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<style>
+#map_canvas img{ max-width: none }
+.infoDiv {
+	height: 200px;    
+	width: 300px; 
+	-webkit-user-select: none; 
+	background-color: white; 
+}
+</style>
+
+<div>
+    @Html.ActionLink("Volver", "Index", "Viaje2", new { idusuario = ViewBag.idusuario }, new { })
+</div>
+<br />
+<div id="map_canvas" style="height: 600px;"></div>
+
+@section scripts {
+<section class="scripts">
+<script type="text/javascript">
+$(document).ready(function () {
+    Initialize();
+});
+
+function Initialize() {
+	google.maps.visualRefresh = true;
+	var Liverpool = new google.maps.LatLng(@Html.Raw(Model.FirstOrDefault().latitud), @Html.Raw(Model.FirstOrDefault().longitud));
+	var mapOptions = {
+		zoom: 20,
+		center: Liverpool,
+		mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
+	};
+	var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+	var myLatlng = new google.maps.LatLng(@Html.Raw(Model.FirstOrDefault().latitud), @Html.Raw(Model.FirstOrDefault().longitud));
+	var marker = new google.maps.Marker({
+		position: myLatlng,
+		map: map,
+		title: 'Inicio'
+	});
+	marker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
+	var data = [
+	@foreach (var item in Model) {
+	@Html.Raw("{ 'Id': " + item.idubicacion + ", 'GeoLong': '" + item.longitud + "', 'GeoLat': '" + item.latitud + "', 'OpeningHours': '" + item.hora.AddHours(2) + "', 'PlaceName': 'INFO LUGAR' },")
+	}
+	];
+	$.each(data, function (i, item) {
+		var marker = new google.maps.Marker({
+			'position': new google.maps.LatLng(item.GeoLat, item.GeoLong),
+			'map': map,
+			'title': item.OpeningHours
+		});
+		marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png');
+		var infowindow = new google.maps.InfoWindow({
+			content: "<div class='infoDiv'><h2>Posición " + item.Id + "</h2>" + "<div><h4>Hora: " + item.OpeningHours + "</h4></div></div>"
+		});
+		google.maps.event.addListener(marker, 'click', function () {
+			infowindow.open(map, marker);
+		});
+	});
+}
+</script>
+</section>
+}
